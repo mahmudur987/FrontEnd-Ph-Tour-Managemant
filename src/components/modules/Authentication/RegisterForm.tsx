@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -28,7 +29,18 @@ const registerSchema = z
       })
       .max(50),
     email: z.email(),
-    password: z.string().min(8, { error: "Password is too short" }),
+    password: z
+      .string()
+      .min(8, { message: "Password must be at least 8 characters long" })
+      .regex(/[A-Z]/, {
+        message: "Password must  contain at least one uppercase letter",
+      })
+      .regex(/[0-9]/, {
+        message: "Password must contain at least one digit",
+      })
+      .regex(/[@$!%*?&#^()\-_=+{}[\]|;:'",.<>/~`]/, {
+        message: "Password must contain at least one special character",
+      }),
     confirmPassword: z
       .string()
       .min(8, { error: "Confirm Password is too short" }),
@@ -66,9 +78,10 @@ export function RegisterForm({
       const result = await register(userInfo).unwrap();
       console.log(result);
       toast.success("User created successfully");
-      navigate("/verify");
-    } catch (error) {
+      navigate("/verify", { state: data.email });
+    } catch (error: any) {
       console.error(error);
+      toast.error(error?.data?.message || "Something went wrong");
     }
   };
 

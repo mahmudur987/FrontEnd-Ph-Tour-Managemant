@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useLogInMutation } from "@/redux/features/auth/auth.api";
 // import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
@@ -21,10 +22,10 @@ export function LoginForm({
 }: React.HTMLAttributes<HTMLDivElement>) {
   const navigate = useNavigate();
   const form = useForm();
-  // const [login] = useLoginMutation();
+  const [login] = useLogInMutation();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      const res = await "login(data).unwrap()";
+      const res = await login(data).unwrap();
       console.log(res);
     } catch (err: any) {
       console.error(err);

@@ -7,7 +7,7 @@ import Login from "@/pages/Login";
 import App from "@/App";
 const router = createBrowserRouter([
   {
-    element: App,
+    Component: App,
     path: "/",
     children: [
       {

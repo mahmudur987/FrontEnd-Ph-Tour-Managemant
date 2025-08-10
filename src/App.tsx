@@ -1,7 +1,12 @@
+import { Outlet } from "react-router";
 import CommonLayout from "./components/layouts/CommonLayout";
 
-function App({ children }: { children: React.ReactNode }) {
-  return <CommonLayout>{children}</CommonLayout>;
+function App() {
+  return (
+    <CommonLayout>
+      <Outlet />
+    </CommonLayout>
+  );
 }
 
 export default App;
