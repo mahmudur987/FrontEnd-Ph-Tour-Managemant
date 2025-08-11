@@ -12,7 +12,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { set, z } from "zod";
+import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -31,14 +31,22 @@ import {
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { cn } from "@/lib/utils";
+import {
+  useSentOtpMutation,
+  useVerifyOtpMutation,
+} from "@/redux/features/auth/auth.api";
+import type { OTPResponse, VerifyOTPResponse } from "@/types/auth.type";
+import type { Error } from "@/types";
 
 export default function Verify() {
   const location = useLocation();
   const navigate = useNavigate();
   const [email] = useState(location.state);
   const [confirm, setConfirm] = useState(false);
+  const [timer, setTimer] = useState(120);
+  const [setOtp] = useSentOtpMutation();
 
-  const [timer, setTimer] = useState(10);
+  const [verifyOtp] = useVerifyOtpMutation();
 
   const FormSchema = z.object({
     pin: z.string().min(6, {
@@ -52,13 +60,33 @@ export default function Verify() {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    const result = await verifyOtp({ email: email, otp: data.pin });
+    const verify = result.data as VerifyOTPResponse;
+    const error = result.error as Error;
+    if (verify) {
+      console.log(verify);
+      toast.success(verify.message || "OTP verified successfully");
+      navigate("/");
+    } else if (error) {
+      console.log(error);
+      toast.error(error.data.message || "Something went wrong");
+    }
   };
 
-  const handleSentOtp = () => {
-    setConfirm(true);
-    setTimer(10);
+  const handleSentOtp = async () => {
+    const result = await setOtp({ email });
+    const data = result.data as OTPResponse;
+    const error = result.error as Error;
+    if (data) {
+      console.log(data);
+      toast.success(data.message || "OTP sent successfully");
+      setConfirm(true);
+      setTimer(120);
+    } else if (error) {
+      console.log(error);
+      toast.error(error.data.message || "Something went wrong");
+    }
   };
 
   useEffect(() => {
