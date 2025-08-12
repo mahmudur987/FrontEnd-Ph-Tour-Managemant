@@ -9,23 +9,46 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { envVariables } from "@/config";
 import { cn } from "@/lib/utils";
 import { useLogInMutation } from "@/redux/features/auth/auth.api";
+import { zodResolver } from "@hookform/resolvers/zod";
 // import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
+import z from "zod";
 
 export function LoginForm({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   const navigate = useNavigate();
-  const form = useForm();
+  const registerSchema = z.object({
+    email: z.email(),
+    password: z.string(),
+  });
+
+  const form = useForm<z.infer<typeof registerSchema>>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
   const [login] = useLogInMutation();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      const res = await login(data).unwrap();
+      const res = await login({
+        email: data.email,
+        password: data.password,
+      }).unwrap();
+
+      if (res.success) {
+        toast.success(res.message || "Login successful");
+        navigate("/");
+      }
+
       console.log(res);
     } catch (err: any) {
       console.error(err);
@@ -101,6 +124,13 @@ export function LoginForm({
           type="button"
           variant="outline"
           className="w-full cursor-pointer"
+          onClick={() => {
+            window.open(
+              `${envVariables.baseUrl}auth/google`,
+              "_self",
+              "noopener noreferrer"
+            );
+          }}
         >
           Login with Google
         </Button>

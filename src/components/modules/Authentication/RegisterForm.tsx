@@ -19,6 +19,7 @@ import Password from "@/components/ui/Password";
 // import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
 import { useRegisterMutation } from "@/redux/features/auth/auth.api";
+import { envVariables } from "@/config";
 
 const registerSchema = z
   .object({
@@ -181,6 +182,13 @@ export function RegisterForm({
           type="button"
           variant="outline"
           className="w-full cursor-pointer"
+          onClick={() => {
+            window.open(
+              `${envVariables.baseUrl}auth/google`,
+              "_self",
+              "noopener noreferrer"
+            );
+          }}
         >
           Login with Google
         </Button>

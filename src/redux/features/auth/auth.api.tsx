@@ -1,8 +1,12 @@
-import Verify from "@/pages/Verify";
 import { baseApi } from "@/redux/baseApi";
-import type { OTPResponse, VerifyOTPResponse } from "@/types/auth.type";
+import type {
+  IResponse,
+  IUser,
+  OTPResponse,
+  VerifyOTPResponse,
+} from "@/types/auth.type";
 
-const authApi = baseApi.injectEndpoints({
+export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     Register: build.mutation({
       query: (credentials) => ({
@@ -12,7 +16,10 @@ const authApi = baseApi.injectEndpoints({
       }),
     }),
 
-    LogIn: build.mutation({
+    LogIn: build.mutation<
+      IResponse<LoginData>,
+      { email: string; password: string }
+    >({
       query: (credentials) => ({
         url: "auth/login",
         method: "POST",
@@ -30,13 +37,26 @@ const authApi = baseApi.injectEndpoints({
 
     VerifyOtp: build.mutation<
       VerifyOTPResponse,
-      { email: string; otp: string },
-      VerifyOTPResponse
+      { email: string; otp: string }
     >({
       query: (data) => ({
         url: "otp/verify",
         method: "POST",
         data: data,
+      }),
+    }),
+
+    GetProfile: build.query<IResponse<IUser>, null>({
+      query: () => ({
+        url: "auth/profile",
+        method: "GET",
+      }),
+    }),
+
+    LogOut: build.mutation({
+      query: () => ({
+        url: "auth/logout",
+        method: "POST",
       }),
     }),
   }),
@@ -47,4 +67,6 @@ export const {
   useLogInMutation,
   useSentOtpMutation,
   useVerifyOtpMutation,
+  useGetProfileQuery,
+  useLogOutMutation,
 } = authApi;

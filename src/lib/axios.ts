@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const axiosInstance = axios.create({
   baseURL: envVariables.baseUrl,
+  withCredentials: true,
 });
 
 // Add a request interceptor
@@ -23,7 +24,7 @@ axiosInstance.interceptors.response.use(
   function onFulfilled(response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    console.log("Axios", response);
+    // console.log("Axios", response);
     return response;
   },
   function onRejected(error) {
