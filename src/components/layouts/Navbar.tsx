@@ -23,11 +23,16 @@ import { useAppDispatch } from "@/redux/hook";
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "Home", role: "Public" },
-  { href: "/about", label: "About", role: "public" },
+  { href: "/about", label: "About", role: "Public" },
   {
     href: "/admin",
     label: "Dashboard",
     role: "Admin",
+  },
+  {
+    href: "/admin",
+    label: "Dashboard",
+    role: "Super Admin",
   },
   {
     href: "/user",
@@ -113,7 +118,7 @@ export default function Navbar() {
                         </NavigationMenuLink>
                       </NavigationMenuItem>
                     ))}
-                </NavigationMenuList> 
+                </NavigationMenuList>
               </NavigationMenu>
             </PopoverContent>
           </Popover>

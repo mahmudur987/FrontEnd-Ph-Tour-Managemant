@@ -13,6 +13,11 @@ import Analytics from "@/pages/Admin/Analytics";
 import { adminRouteWithSidebar } from "./admin.route";
 import { generateRoute } from "@/utils/generateRoutes";
 import { userRouteWithSidebar } from "./userRoute";
+import { role } from "@/constant";
+import { withAuth } from "@/utils/withRole";
+import type { Role } from "@/types/auth.type";
+import Unauthorized from "@/pages/unauthorized";
+
 const router = createBrowserRouter([
   {
     Component: App,
@@ -30,7 +35,10 @@ const router = createBrowserRouter([
     ],
   },
   {
-    Component: DashboardLayout,
+    Component: withAuth(DashboardLayout, [
+      role.Admin as Role,
+      role.SuperAdmin as Role,
+    ]),
     path: "/admin",
     children: [
       {
@@ -41,7 +49,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    Component: DashboardLayout,
+    Component: withAuth(DashboardLayout, [role.User as Role]),
     path: "/user",
     children: [
       {
@@ -62,6 +70,10 @@ const router = createBrowserRouter([
   {
     Component: Verify,
     path: "/verify",
+  },
+  {
+    Component: Unauthorized,
+    path: "/unauthorized",
   },
 ]);
 

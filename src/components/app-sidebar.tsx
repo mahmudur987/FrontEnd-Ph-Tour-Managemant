@@ -14,35 +14,20 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { adminRouteWithSidebar } from "@/routes/admin.route";
-import { userRouteWithSidebar } from "@/routes/userRoute";
+
 import { useGetProfileQuery } from "@/redux/features/auth/auth.api";
-import type { ISidebar } from "@/types/sidebar.type";
-import { is } from "zod/v4/locales";
+
 import { Link } from "react-router";
-const getSidebarData = (role: string): ISidebar => {
-  switch (role) {
-    case "Admin":
-      return adminRouteWithSidebar;
-    case "User":
-      return userRouteWithSidebar;
-    case "Super Admin":
-      return {
-        navMain: [
-          ...adminRouteWithSidebar.navMain,
-          ...userRouteWithSidebar.navMain,
-        ],
-      };
-    default:
-      return adminRouteWithSidebar;
-  }
-};
+import { getSidebarData } from "@/utils/getSidebarDatra";
+import type { Role } from "@/types/auth.type";
+import Logo from "@/assets/icons/Logo";
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: UserInfo, isLoading, isError } = useGetProfileQuery({});
   const userRole = UserInfo?.data.role;
   console.log(userRole);
 
-  const data = getSidebarData(userRole as string);
+  const data = getSidebarData(userRole as Role);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -54,16 +39,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GalleryVerticalEnd className="size-4" />
-                </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Documentation</span>
-                  <span className="">v1.0.0</span>
-                </div>
-              </a>
+            <SidebarMenuButton>
+              <Link to={"/"} className="w-20 h-20">
+                <Logo />
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

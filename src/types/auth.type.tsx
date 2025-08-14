@@ -41,3 +41,5 @@ export interface IUserAuth {
   provider: string;
   providerId: string;
 }
+
+export type Role = "Admin" | "User" | "Super Admin";
