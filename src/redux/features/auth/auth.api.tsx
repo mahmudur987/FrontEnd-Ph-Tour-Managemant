@@ -2,6 +2,7 @@ import { baseApi } from "@/redux/baseApi";
 import type {
   IResponse,
   IUser,
+  LoginData,
   OTPResponse,
   VerifyOTPResponse,
 } from "@/types/auth.type";

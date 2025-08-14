@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+import { AddTourTypeModal } from "@/components/modules/Admin/AddTourType/AddTourTypeModal";
+
 import {
   Table,
   TableBody,
@@ -20,7 +21,7 @@ const AddTourType = () => {
   return (
     <div>
       <div className="flex justify-end">
-        <Button>Add Tour Type</Button>
+        <AddTourTypeModal />
       </div>
 
       <Table className=" max-w-4xl  w-full mx-auto border my-10 px-2 p-5 rounded-2xl">
