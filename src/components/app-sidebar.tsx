@@ -1,5 +1,4 @@
 import * as React from "react";
-import { GalleryVerticalEnd } from "lucide-react";
 
 import {
   Sidebar,
@@ -25,7 +24,7 @@ import Logo from "@/assets/icons/Logo";
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: UserInfo, isLoading, isError } = useGetProfileQuery({});
   const userRole = UserInfo?.data.role;
-  console.log(userRole);
+  // console.log(userRole);
 
   const data = getSidebarData(userRole as Role);
   if (isLoading) {

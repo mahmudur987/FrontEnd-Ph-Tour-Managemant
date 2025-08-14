@@ -1,4 +1,6 @@
+import { ConfirmDeleteModal } from "@/components/confirmDeleteModal";
 import { AddTourTypeModal } from "@/components/modules/Admin/AddTourType/AddTourTypeModal";
+import { Button } from "@/components/ui/button";
 
 import {
   Table,
@@ -9,15 +11,29 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useGetTourTypesQuery } from "@/redux/features/Tour/tour.api";
+import {
+  useGetTourTypesQuery,
+  useRemoveTourTypeMutation,
+} from "@/redux/features/Tour/tour.api";
 import { Trash2 } from "lucide-react";
+import { toast } from "sonner";
 
 const AddTourType = () => {
   const { data: tourTypes, isLoading, isError } = useGetTourTypesQuery({});
-
+  const [deleteTourType] = useRemoveTourTypeMutation();
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await deleteTourType(id);
+      console.log(res);
+      toast.success("Tour Type deleted successfully");
+    } catch (error: any) {
+      console.log(error);
 
+      toast.error(error?.data?.message || "Something went wrong");
+    }
+  };
   return (
     <div>
       <div className="flex justify-end">
@@ -40,7 +56,13 @@ const AddTourType = () => {
               <TableRow className="flex justify-between" key={tourType._id}>
                 <TableCell className="font-medium">{tourType.name}</TableCell>
                 <TableCell className="text-right">
-                  <Trash2 size={20} />
+                  <ConfirmDeleteModal
+                    onConfirm={() => handleDelete(tourType._id)}
+                  >
+                    <Button variant="destructive">
+                      <Trash2 size={20} />
+                    </Button>
+                  </ConfirmDeleteModal>
                 </TableCell>
               </TableRow>
             ))}
