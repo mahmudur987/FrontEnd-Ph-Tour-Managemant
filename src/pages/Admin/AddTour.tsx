@@ -41,7 +41,7 @@ import {
   useAddTourMutation,
   useGetTourTypesQuery,
 } from "@/redux/features/Tour/tour.api";
-import type { Error, IErrorResponse } from "@/types";
+import type { IErrorResponse } from "@/types";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format, formatISO } from "date-fns";
@@ -239,6 +239,7 @@ export default function AddTour() {
               className="space-y-5"
               onSubmit={form.handleSubmit(handleSubmit)}
             >
+              {/* title */}
               <FormField
                 control={form.control}
                 name="title"
@@ -253,6 +254,7 @@ export default function AddTour() {
                 )}
               />
               <div className="flex gap-5">
+                {/* location */}
                 <FormField
                   control={form.control}
                   name="location"
@@ -266,6 +268,8 @@ export default function AddTour() {
                     </FormItem>
                   )}
                 />
+
+                {/* cost */}
                 <FormField
                   control={form.control}
                   name="costFrom"
@@ -281,6 +285,7 @@ export default function AddTour() {
                 />
               </div>
               <div className="flex gap-5">
+                {/* departure location */}
                 <FormField
                   control={form.control}
                   name="departureLocation"
@@ -322,7 +327,7 @@ export default function AddTour() {
                       >
                         <FormControl>
                           <SelectTrigger className="w-full">
-                            <SelectValue />
+                            <SelectValue placeholder="Select a division" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -352,19 +357,24 @@ export default function AddTour() {
                       >
                         <FormControl>
                           <SelectTrigger className="w-full">
-                            <SelectValue />
+                            <SelectValue placeholder="Select a tour type" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {tourTypeOptions?.map(
-                            (option: { value: string; label: string }) => (
-                              <SelectItem
-                                key={option.value}
-                                value={option.value}
-                              >
-                                {option.label}
-                              </SelectItem>
-                            )
+                          {tourTypeOptions &&
+                            tourTypeOptions?.length > 0 &&
+                            tourTypeOptions?.map(
+                              (option: { value: string; label: string }) => (
+                                <SelectItem
+                                  key={option.value}
+                                  value={option.value}
+                                >
+                                  {option.label}
+                                </SelectItem>
+                              )
+                            )}
+                          {tourTypeOptions && tourTypeOptions?.length === 0 && (
+                            <SelectItem value="none">None</SelectItem>
                           )}
                         </SelectContent>
                       </Select>
@@ -401,6 +411,8 @@ export default function AddTour() {
                   )}
                 />
               </div>
+
+              {/* dates */}
               <div className="flex gap-5">
                 <FormField
                   control={form.control}
@@ -491,7 +503,7 @@ export default function AddTour() {
                   )}
                 />
               </div>
-
+              {/* description and image uploader */}
               <div className="flex gap-5 items-stretch">
                 <FormField
                   control={form.control}
@@ -511,6 +523,8 @@ export default function AddTour() {
                 </div>
               </div>
               <div className="border-t border-muted w-full "></div>
+
+              {/* included  */}
               <div>
                 <div className="flex justify-between">
                   <p className="font-semibold">Included</p>
@@ -552,7 +566,7 @@ export default function AddTour() {
                   ))}
                 </div>
               </div>
-
+              {/* excluded */}
               <div>
                 <div className="flex justify-between">
                   <p className="font-semibold">Excluded</p>
@@ -594,7 +608,7 @@ export default function AddTour() {
                   ))}
                 </div>
               </div>
-
+              {/* amenities */}
               <div>
                 <div className="flex justify-between">
                   <p className="font-semibold">Amenities</p>
@@ -636,7 +650,7 @@ export default function AddTour() {
                   ))}
                 </div>
               </div>
-
+              {/*               tour plan */}
               <div>
                 <div className="flex justify-between">
                   <p className="font-semibold">Tour Plan</p>
