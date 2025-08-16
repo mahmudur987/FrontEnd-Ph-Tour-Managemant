@@ -20,6 +20,7 @@ import Unauthorized from "@/pages/unauthorized";
 import Tours from "@/pages/Tours";
 import TourDetails from "@/pages/TourDetails";
 import Bookings from "@/pages/User/Bookings";
+import Homepage from "@/pages/Homepage";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        Component: Homepage,
+      },
+      {
+        path: "about",
         Component: About,
       },
       {
