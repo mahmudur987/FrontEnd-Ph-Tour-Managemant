@@ -37,7 +37,10 @@ import type { FileMetadata } from "@/hooks/use-file-upload";
 import { cn } from "@/lib/utils";
 import { useGetAllDivisionQuery } from "@/redux/features/Division/division.api";
 // import { useGetDivisionsQuery } from "@/redux/features/division/division.api";
-import { useGetTourTypesQuery } from "@/redux/features/Tour/tour.api";
+import {
+  useAddTourMutation,
+  useGetTourTypesQuery,
+} from "@/redux/features/Tour/tour.api";
 import type { Error, IErrorResponse } from "@/types";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -74,7 +77,7 @@ export default function AddTour() {
   const { data: divisionData, isLoading: divisionLoading } =
     useGetAllDivisionQuery(undefined);
   const { data: tourTypeData } = useGetTourTypesQuery(undefined);
-  // const [addTour] = useAddTourMutation();
+  const [addTour] = useAddTourMutation();
 
   const divisionOptions = divisionData?.data.map(
     (item: { _id: string; name: string }) => ({
@@ -206,7 +209,7 @@ export default function AddTour() {
     images.forEach((image) => formData.append("files", image as File));
 
     try {
-      const res = "await addTour(formData).unwrap()";
+      const res = await addTour(formData).unwrap();
 
       if (res.success) {
         toast.success("Tour created", { id: toastId });
