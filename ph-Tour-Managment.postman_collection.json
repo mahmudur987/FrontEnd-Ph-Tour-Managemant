@@ -1,0 +1,955 @@
+{
+	"info": {
+		"_postman_id": "ccd088e7-e021-4a1e-9b1f-c2fbdfc16b0a",
+		"name": "ph-Tour-Managment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27533958"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"martin1\",\n    \"email\": \"martin1@gmail.com\",\n    \"password\": \"A@123457\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/user/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWQuTWFobXVkdXIgUmFobWFuIiwiZW1haWwiOiJzYWZlbWFobXVkOTg3QGdtYWlsLmNvbSIsIl9pZCI6IjY4NzYzMWFiZWE0NDA0YTQ0NDU0MTEwOCIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNzU0ODA2NDk2LCJleHAiOjE3NTQ4OTI4OTZ9.Zi7G3fzeGGEQkQKJEnlxSDz74mP-_y1AqvBM24389P"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/user",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"safemahmud987@gmail.com\",\n    \"password\": \"A@1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log Out",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/auth/logout",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzUzMTUzMTEyLCJleHAiOjE3NTMyMzk1MTJ9.L059q1oEa-xed6NNDVuGaJ7vuc5GXhn79JOwsihNk5Q"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"mahmud66\",\n  \"isVerified\": true,\n  \"email\": \"mahmud5@gmail.com\",\n  \"phone\":\"01671706882\",\n  \"address\":\"21/2/meradia,khilgaon,dhaka\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/user/687489b3d8d8ed487be3b210",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user",
+								"687489b3d8d8ed487be3b210"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE3NTI1NTY4NTksImV4cCI6MTc1NTE0ODg1OX0.OhNlq3Cf9XB6G5YryDoV0Mn_rBRufwiiHATViYK5W7A",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/auth/refreshToken",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refreshToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE3NTI1NjM1NDAsImV4cCI6MTc1MjY0OTk0MH0.o8_Bx5VCHE3-LCaaMnTz_WzaceJxZ5LWvTuzYISpL-Y"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"A@123456\",\n  \"newPassword\": \"A@1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/auth/resetPassword",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWQuTWFobXVkdXIgUmFobWFuIiwiZW1haWwiOiJzYWZlbWFobXVkOTg3QGdtYWlsLmNvbSIsIl9pZCI6IjY4OWFkMDFlMWRlNjE4NGI4NjEwYTkzNSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NTE4MjAwNSwiZXhwIjoxNzU1MjY4NDA1fQ.kZX4SHetg6r01LaODQFIqsY7RxriDzqbtXEZL5poP8U"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\": \"A@1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/setPassword",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"setPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget-password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE3NTI1NTY4NTksImV4cCI6MTc1NTE0ODg1OX0.OhNlq3Cf9XB6G5YryDoV0Mn_rBRufwiiHATViYK5W7A",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"safemahmud987@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/forget-password",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWQuTWFobXVkdXIgUmFobWFuIiwiZW1haWwiOiJzYWZlbWFobXVkOTg3QGdtYWlsLmNvbSIsIl9pZCI6IjY4NzYzMWFiZWE0NDA0YTQ0NDU0MTEwOCIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNzUzNzAyMTkzLCJleHAiOjE3NTM3MDI3OTN9.v7V6T0fPjUEy3MYXzCFjoZa02i3QdCzXcK7YqVkLJc0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"687631abea4404a444541108\",\r\n    \"password\":\"A@1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/reset-password",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-User-Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"safemahmud987@gmail.com\",\n    \"password\": \"A@123456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/profile",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "division",
+			"item": [
+				{
+					"name": "create division",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"name\": \"test division\",\n    \"description\": \"Description of the new division.\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/Users/MAHMUD/Pictures/Bing Images/BandaIsland_EN-US9494080788_1920x1080.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/division/createDivision",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"division",
+								"createDivision"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update division",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE3NTI5OTM1OTAsImV4cCI6MTc1MzA3OTk5MH0.Dl3L_cwohS7TWbZ7ybNfKVq7ZQ3AJr8Dj2e5-KhCiCY",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"name\": \"Dhaka 111\",\n\n\"description\": \"Capital city with rich history and culturesssssss.\"}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/Users/MAHMUD/Pictures/Bing Images/FlagCapitolDC_EN-US1553861171_1920x1080.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/division/687a2c07077027f74da34ce1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"division",
+								"687a2c07077027f74da34ce1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete division",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE3NTI5OTM1OTAsImV4cCI6MTc1MzA3OTk5MH0.Dl3L_cwohS7TWbZ7ybNfKVq7ZQ3AJr8Dj2e5-KhCiCY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"name\": \"Dhaka 11\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/division/687a2ca1b7f2d0993a4462c9",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"division",
+								"687a2ca1b7f2d0993a4462c9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all division",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/division",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"division"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single division",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tour Type",
+			"item": [
+				{
+					"name": "create Tour Type",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE3NTI5OTM1OTAsImV4cCI6MTc1MzA3OTk5MH0.Dl3L_cwohS7TWbZ7ybNfKVq7ZQ3AJr8Dj2e5-KhCiCY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"name\": \"New Division11 111\",\r\n            \"slug\": \"new-division1-division\",\r\n            \"thumbnail\": \"https://example.com/images/new-division.jpg\",\r\n            \"description\": \"Description of the new division.\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/tourType",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tourType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update  Tour Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete  Tour Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all Tour Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/tourType",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tourType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Single",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tour",
+			"item": [
+				{
+					"name": "create tour",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"title\": \"Discover the Beauty of Cox's Bazar4\",\n    \"description\": \"Join us on a breathtaking tour of Cox's Bazar, the longest natural sea beach in the world.\",\n    \"location\": \"Cox's Bazar, Bangladesh\",\n    \"costFrom\": 8500,\n    \"startDate\": \"2025-08-10T09:00:00.000Z\",\n    \"endDate\": \"2025-08-14T18:00:00.000Z\",\n    \"included\": [\n        \"Hotel accommodation\",\n        \"Breakfast and dinner\",\n        \"Beach BBQ party\"\n    ],\n    \"excluded\": [\n        \"Lunch\",\n        \"Personal expenses\",\n        \"Travel insurance\"\n    ],\n    \"amenities\": [\n        \"Free Wi-Fi\",\n        \"Swimming pool\",\n        \"Air conditioning\"\n    ],\n    \"tourPlan\": [\n        \"Day 1: Arrival and hotel check-in\",\n        \"Day 2: Beach activities and sightseeing\",\n        \"Day 3: St. Martin's Island trip\",\n        \"Day 4: Free time and shopping\",\n        \"Day 5: Departure\"\n    ],\n    \"maxGuest\": 30,\n    \"minAge\": 12,\n    \"division\": \"687a2c07077027f74da34ce1\",\n    \"tourType\": \"687a3ac604bd32b488b4eff1\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"/E:/Users/MAHMUD/Pictures/Bing Images/AcroporaReef_EN-US5567789372_1920x1080.jpg",
+										"/E:/Users/MAHMUD/Pictures/Bing Images/AerialEverglades_EN-US9045585896_1920x1080.jpg"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/tour/createTour",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tour",
+								"createTour"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update tour",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzUyOTk4MjY2LCJleHAiOjE3NTMwODQ2NjZ9.3FyXvRL3swkXrJJwyGp3nZvRj7rDDkW8NWf7-5b55oA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"description\": \"Join4444 us on a breathtaking tour of Cox's Bazar, the longest natural sea beach in the world.\",\n    \"deleteImages\": [\n        \"https: //res.cloudinary.com/dysvaou7n/image/upload/v1753525552/m85lpkg7zhc-1753525548122-ashywoodswallowen-us70057709981920x1080-jpg..jpg\"\n    ]\n}",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/tour/updateTour/688499097315be8d1f19eee8",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tour",
+								"updateTour",
+								"688499097315be8d1f19eee8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete tour",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "get all Tour",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/tour?page=2&limit=5&fields=title,description,createdAt,startDate&sort=startDate",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tour"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "fields",
+									"value": "title,description,createdAt,startDate"
+								},
+								{
+									"key": "sort",
+									"value": "startDate"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Single",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "booking",
+			"item": [
+				{
+					"name": "create-booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicGhvbmUiOiIwMTY3MTcwNjg4MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1MzQzNTk3OSwiZXhwIjoxNzUzNTIyMzc5fQ.pUByYI5JqW1knU0t-MANBK9ThHh_9t4IrVpt3Vx83Fw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n  \"tour\": \"687caf58464a580ea3c177a8\",\n  \"guestCount\": 2\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/booking/createBooking",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"booking",
+								"createBooking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all booking",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzUzMTUzMTEyLCJleHAiOjE3NTU3NDUxMTJ9.MWpFfO5Jw3raFCnn4-fvhuwTTCCR-9xgl0Bn-sTM4So",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/booking",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single Booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/booking/687ef6f3a6d714e142463879",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"booking",
+								"687ef6f3a6d714e142463879"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update booking",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzUzMTUzMTEyLCJleHAiOjE3NTMyMzk1MTJ9.L059q1oEa-xed6NNDVuGaJ7vuc5GXhn79JOwsihNk5Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \r\n            \"bookingStatus\": \"FAILED\"\r\n         \r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/booking/687ef6f3a6d714e142463879",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"booking",
+								"687ef6f3a6d714e142463879"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete booking",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzUzMTUzMTEyLCJleHAiOjE3NTMyMzk1MTJ9.L059q1oEa-xed6NNDVuGaJ7vuc5GXhn79JOwsihNk5Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/booking/687ef6f3a6d714e142463879",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"booking",
+								"687ef6f3a6d714e142463879"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userBooking",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzUzMTUzMTEyLCJleHAiOjE3NTU3NDUxMTJ9.MWpFfO5Jw3raFCnn4-fvhuwTTCCR-9xgl0Bn-sTM4So",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/booking/userBookings",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"booking",
+								"userBookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "create payment",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "init payment for canceld booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFobXVkNjYiLCJlbWFpbCI6Im1haG11ZDZAZ21haWwuY29tIiwiX2lkIjoiNjg3NDg5YjNkOGQ4ZWQ0ODdiZTNiMjEwIiwicGhvbmUiOiIwMTY3MTcwNjg4MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1MzQzNTk3OSwiZXhwIjoxNzUzNTIyMzc5fQ.pUByYI5JqW1knU0t-MANBK9ThHh_9t4IrVpt3Vx83Fw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n  \"tour\": \"687caf58464a580ea3c177a8\",\n  \"guestCount\": 2\n\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/payment/init-payment/68838e7d49911a45fa1d662d",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"payment",
+								"init-payment",
+								"68838e7d49911a45fa1d662d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "otp",
+			"item": [
+				{
+					"name": "send otp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWQuTWFobXVkdXIgUmFobWFuIiwiZW1haWwiOiJzYWZlbWFobXVkOTg3QGdtYWlsLmNvbSIsIl9pZCI6IjY4NzYzMWFiZWE0NDA0YTQ0NDU0MTEwOCIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNzUzNjA2ODI3LCJleHAiOjE3NTM2OTMyMjd9.xmfv49zYHlpMJTva4BMjmFkO2gZCzF_gxndXgHFZWB0",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"safemahmud987@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/otp/send",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"otp",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"safemahmud987@gmail.com\",\r\n    \"otp\": \"561157\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/otp/verify",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"otp",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:5000",
+			"type": "default"
+		}
+	]
+}
