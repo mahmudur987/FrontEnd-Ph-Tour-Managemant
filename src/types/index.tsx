@@ -1,11 +1,13 @@
 export interface Error {
   statusCode: number;
-  data: {
-    success: boolean;
-    message: string;
-    error: {
-      statusCode: number;
-    };
-    stack: any;
+  data: IErrorResponse;
+  stack: string;
+}
+
+export interface IErrorResponse {
+  success: boolean;
+  message: string;
+  error: {
+    statusCode: number;
   };
 }

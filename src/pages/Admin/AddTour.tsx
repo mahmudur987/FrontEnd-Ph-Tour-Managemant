@@ -38,6 +38,7 @@ import { cn } from "@/lib/utils";
 import { useGetAllDivisionQuery } from "@/redux/features/Division/division.api";
 // import { useGetDivisionsQuery } from "@/redux/features/division/division.api";
 import { useGetTourTypesQuery } from "@/redux/features/Tour/tour.api";
+import type { Error, IErrorResponse } from "@/types";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format, formatISO } from "date-fns";
