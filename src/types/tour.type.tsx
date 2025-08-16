@@ -15,6 +15,7 @@ export interface ITour {
   endDate: Date;
   departureLocation: string;
   arrivalLocation: string;
+  images: string[];
   included: { value: string }[];
   excluded: { value: string }[];
   amenities: { value: string }[];

@@ -202,7 +202,7 @@ export default function AddTour() {
           ? []
           : data.tourPlan.map((item: { value: string }) => item.value),
     };
-
+    console.log(tourData);
     const formData = new FormData();
 
     formData.append("data", JSON.stringify(tourData));
@@ -210,7 +210,7 @@ export default function AddTour() {
 
     try {
       const res = await addTour(formData).unwrap();
-
+      console.log(res);
       if (res.success) {
         toast.success("Tour created", { id: toastId });
         form.reset();
