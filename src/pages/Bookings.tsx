@@ -18,9 +18,9 @@ export default function Bookings() {
 
   useEffect(() => {
     if (!isLoading && !isError) {
-      setTotalAmount(guestCount * tourData!.costFrom);
+      setTotalAmount(guestCount * Number(tourData?.costFrom));
     }
-  }, [guestCount, totalAmount, isLoading, isError]);
+  }, [guestCount, totalAmount, isLoading, isError, tourData]);
 
   const incrementGuest = () => {
     setGuestCount((prv) => prv + 1);

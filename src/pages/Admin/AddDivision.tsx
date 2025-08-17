@@ -14,7 +14,7 @@ import type { IDivision } from "@/types/division.type";
 import { Trash2 } from "lucide-react";
 
 const AddDivision = () => {
-  const { data, isLoading, isError } = useGetAllDivisionQuery({});
+  const { data, isLoading, isError } = useGetAllDivisionQuery(undefined);
   const divisions = data?.data as IDivision[];
   console.log(divisions);
   return (

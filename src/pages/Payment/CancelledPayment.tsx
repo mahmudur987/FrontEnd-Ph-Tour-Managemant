@@ -19,9 +19,7 @@ const CancelledPayment = () => {
           </p>
         </div>
         <CardFooter>
-          <Button variant="primary" as="a" href="/billing">
-            Go to Billing
-          </Button>
+          <Button>Go to Billing</Button>
         </CardFooter>
       </Card>
     </div>

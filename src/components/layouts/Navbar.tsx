@@ -47,7 +47,7 @@ const navigationLinks = [
 ];
 
 export default function Navbar() {
-  const { data, isLoading, isError } = useGetProfileQuery({});
+  const { data, isLoading, isError } = useGetProfileQuery(null);
 
   const [LogOut] = useLogOutMutation();
   const dispatch = useAppDispatch();

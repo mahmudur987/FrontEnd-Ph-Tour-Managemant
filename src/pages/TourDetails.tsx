@@ -76,7 +76,7 @@ export default function TourDetails() {
               <strong>Arrival:</strong> {tourData?.arrivalLocation}
             </p>
             <p>
-              <strong>Division:</strong> {divisionData?.[0]?.name}
+              <strong>Division:</strong> {divisionData?.data[0].name}
             </p>
             <p>
               <strong>Tour Type:</strong> {tourData?.tourType}

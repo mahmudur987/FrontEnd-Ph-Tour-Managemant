@@ -20,7 +20,7 @@ export default function Tours() {
       <div className="col-span-9 w-full">
         {data?.map((item) => (
           <div
-            key={item.slug}
+            key={item._id}
             className="border border-muted rounded-lg shadow-md overflow-hidden mb-6 flex"
           >
             <div className="w-2/5 bg-red-500 flex-shrink-0">

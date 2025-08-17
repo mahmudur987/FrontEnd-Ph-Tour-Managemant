@@ -22,7 +22,7 @@ import type { Role } from "@/types/auth.type";
 import Logo from "@/assets/icons/Logo";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { data: UserInfo, isLoading, isError } = useGetProfileQuery({});
+  const { data: UserInfo, isLoading, isError } = useGetProfileQuery(null);
   const userRole = UserInfo?.data.role;
   // console.log(userRole);
 

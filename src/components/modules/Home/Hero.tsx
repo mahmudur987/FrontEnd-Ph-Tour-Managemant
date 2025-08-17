@@ -1,8 +1,6 @@
-import { ExternalLink } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import { Link, useSearchParams } from "react-router";
-import { Label } from "@radix-ui/react-dropdown-menu";
+import { Link } from "react-router";
+
 import {
   Select,
   SelectGroup,

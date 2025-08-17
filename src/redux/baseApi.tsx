@@ -1,5 +1,5 @@
 // Need to use the React-specific entry point to allow generating React hooks
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import axiosBaseQuery from "./axiosBaseQuery";
 
 // Define a service using a base URL and expected endpoints

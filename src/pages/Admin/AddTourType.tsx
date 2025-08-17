@@ -19,7 +19,11 @@ import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 const AddTourType = () => {
-  const { data: tourTypes, isLoading, isError } = useGetTourTypesQuery({});
+  const {
+    data: tourTypes,
+    isLoading,
+    isError,
+  } = useGetTourTypesQuery(undefined);
   const [deleteTourType] = useRemoveTourTypeMutation();
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
