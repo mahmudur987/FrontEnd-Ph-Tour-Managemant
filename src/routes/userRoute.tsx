@@ -1,4 +1,4 @@
-import Bookings from "@/pages/User/Bookings";
+import Bookings from "@/pages/Bookings";
 import Profile from "@/pages/User/Profile";
 import type { ISidebar } from "@/types/sidebar.type";
 

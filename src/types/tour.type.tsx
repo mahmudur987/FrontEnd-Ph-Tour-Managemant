@@ -16,10 +16,10 @@ export interface ITour {
   departureLocation: string;
   arrivalLocation: string;
   images: string[];
-  included: { value: string }[];
-  excluded: { value: string }[];
-  amenities: { value: string }[];
-  tourPlan: { value: string }[];
+  included: string[];
+  excluded: string[];
+  amenities: string[];
+  tourPlan: string[];
   maxGuest: string;
   minAge: string;
   division: string;

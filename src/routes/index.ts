@@ -19,8 +19,11 @@ import type { Role } from "@/types/auth.type";
 import Unauthorized from "@/pages/unauthorized";
 import Tours from "@/pages/Tours";
 import TourDetails from "@/pages/TourDetails";
-import Bookings from "@/pages/User/Bookings";
+import Bookings from "@/pages/Bookings";
 import Homepage from "@/pages/Homepage";
+import SuccessPayment from "@/pages/Payment/SuccessPayment";
+import FailedPayment from "@/pages/Payment/FailedPayment";
+import CancelledPayment from "@/pages/Payment/CancelledPayment";
 
 const router = createBrowserRouter([
   {
@@ -44,8 +47,27 @@ const router = createBrowserRouter([
         path: "tours/:id",
       },
       {
-        Component: withAuth(Bookings, [role.User as Role]),
+        Component: Bookings,
         path: "booking/:id",
+      },
+    ],
+  },
+
+  {
+    path: "/payment",
+    children: [
+      {
+        index: true,
+        Component: SuccessPayment,
+        path: "/payment/success",
+      },
+      {
+        Component: FailedPayment,
+        path: "/payment/failed",
+      },
+      {
+        Component: CancelledPayment,
+        path: "/payment/cancel",
       },
     ],
   },
@@ -63,6 +85,7 @@ const router = createBrowserRouter([
       ...generateRoute(adminRouteWithSidebar),
     ],
   },
+
   {
     Component: withAuth(DashboardLayout, [role.User as Role]),
     path: "/user",

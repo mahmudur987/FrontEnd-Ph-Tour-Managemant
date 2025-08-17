@@ -11,7 +11,7 @@ export default function Tours() {
   const division = searchParams.get("division") || undefined;
   const tourType = searchParams.get("tourType") || undefined;
 
-  const { data } = useGetToursQuery({});
+  const { data } = useGetToursQuery({ division, tourType });
   console.log(data);
 
   return (
